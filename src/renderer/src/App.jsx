@@ -1,12 +1,17 @@
 import style from './App.module.css'
 import SettingsToolbar from './components/SettingsToolbar'
+import SongList from './components/SongList'
 import Toolbar from './components/Toolbar'
+import { Store } from './store'
 function App() {
   return (
-    <div className={style.container}>
-      <SettingsToolbar />
-      <Toolbar />
-    </div>
+    <Store>
+      <div className={style.container}>
+        <SettingsToolbar />
+        <Toolbar />
+        <SongList />
+      </div>
+    </Store>
   )
 }
 
