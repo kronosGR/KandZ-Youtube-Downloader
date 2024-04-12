@@ -6,7 +6,8 @@ import { PiDownloadSimpleFill } from 'react-icons/pi'
 import style from './Toolbar.module.css'
 import HSpacer from './HSpacer'
 import { isUrl } from '../utils/isUrl'
-import { StoreContext } from '../store'
+import { StoreContext } from '../../data/store'
+import { Song } from '../../models/song'
 
 const Toolbar = () => {
   const [url, setUrl] = useState('https://www.youtube.com/watch?v=7V4KRz_6_Oc')
@@ -27,7 +28,8 @@ const Toolbar = () => {
     // download video info
     const response = await fetch('https://www.youtube.com/oembed?format=json&url=' + url)
     const info = await response.json()
-    setSongList([...songList, info])
+    const tmpSong = new Song(info.author_name, info.html, info.thumbnail_url, info.title, 0, 0, 0)
+    setSongList([...songList, tmpSong])
   }
 
   return (

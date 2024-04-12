@@ -1,0 +1,23 @@
+.container {
+  width: 100%;
+  margin: 5px;
+  background-color: white;
+  padding: 5px;
+  display: flex;
+  color: black;
+  gap: 5px;
+}
+
+.container div {
+  display: flex;
+  flex-direction: column;
+}
+
+.thumbnail {
+  width: 100px;
+}
+
+.author {
+  font-size: 0.7rem;
+  font-weight: bold;
+}

@@ -2,7 +2,7 @@ import style from './App.module.css'
 import SettingsToolbar from './components/SettingsToolbar'
 import SongList from './components/SongList'
 import Toolbar from './components/Toolbar'
-import { Store } from './store'
+import { Store } from '../data/store'
 function App() {
   return (
     <Store>
