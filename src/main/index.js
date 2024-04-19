@@ -17,8 +17,19 @@ function createWindow() {
       sandbox: false,
       devTools: process.env.DEV ? true : false,
       nodeIntegration: true,
-      contextIsolation: false
+      contextIsolation: false,
+      webSecurity: false,
+      webviewTag: true
     }
+  })
+  mainWindow.webContents.session.webRequest.onHeadersReceived({ urls: ['*://*/*'] }, (d, c) => {
+    if (d.responseHeaders['X-Frame-Options']) {
+      delete d.responseHeaders['X-Frame-Options']
+    } else if (d.responseHeaders['x-frame-options']) {
+      delete d.responseHeaders['x-frame-options']
+    }
+
+    c({ cancel: false, responseHeaders: d.responseHeaders })
   })
 
   // in development open devtool

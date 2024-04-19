@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useRef, useEffect } from 'react'
 
 import { FaRegPaste } from 'react-icons/fa6'
 import { MdAddCircleOutline } from 'react-icons/md'
@@ -8,6 +8,7 @@ import HSpacer from './HSpacer'
 import { isUrl } from '../utils/isUrl'
 import { StoreContext } from '../../data/store'
 import { Song } from '../../models/song'
+import { extractId } from '../utils/extractId'
 
 const Toolbar = () => {
   const [url, setUrl] = useState('https://www.youtube.com/watch?v=7V4KRz_6_Oc')
@@ -25,11 +26,10 @@ const Toolbar = () => {
   }
 
   const handleAddVideo = async () => {
-    // download video info
-    const response = await fetch('https://www.youtube.com/oembed?format=json&url=' + url)
-    const info = await response.json()
-    const tmpSong = new Song(info.author_name, info.html, info.thumbnail_url, info.title, 0, 0, 0)
-    setSongList([...songList, tmpSong])
+    const id = extractId(url)
+    console.log(id)
+    // const tmpSong = new Song(info.author_name, info.html, info.thumbnail_url, info.title, 0, 0, 0)
+    // setSongList([...songList, tmpSong])
   }
 
   return (
