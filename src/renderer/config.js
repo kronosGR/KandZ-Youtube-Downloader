@@ -1,3 +1,3 @@
 export default {
-  API_KEY: process.env.REACT_APP_API
+  API_KEY: import.meta.env.VITE_API_KEY
 }

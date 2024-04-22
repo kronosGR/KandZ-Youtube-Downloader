@@ -9,6 +9,8 @@ import { isUrl } from '../utils/isUrl'
 import { StoreContext } from '../../data/store'
 import { Song } from '../../models/song'
 import { extractId } from '../utils/extractId'
+import config from '../../config'
+import { extractYoutubeDuration } from '../utils/extractYoutubeDuration'
 
 const Toolbar = () => {
   const [url, setUrl] = useState('https://www.youtube.com/watch?v=7V4KRz_6_Oc')
@@ -27,9 +29,23 @@ const Toolbar = () => {
 
   const handleAddVideo = async () => {
     const id = extractId(url)
-    console.log(id)
-    // const tmpSong = new Song(info.author_name, info.html, info.thumbnail_url, info.title, 0, 0, 0)
-    // setSongList([...songList, tmpSong])
+    const res = await fetch(
+      `https://youtube.googleapis.com/youtube/v3/videos?part=id%2Csnippet%2Cplayer%2CcontentDetails&id=${id}&key=${config.API_KEY}`
+    )
+
+    const json = (await res.json()).items[0]
+    const snippet = json.snippet
+    console.log(json)
+    const tmpSong = new Song(
+      snippet.channelTitle,
+      json.player.embedHtml,
+      snippet.thumbnails.medium.url,
+      snippet.title,
+      extractYoutubeDuration(json.contentDetails.duration),
+      0,
+      0
+    )
+    setSongList([...songList, tmpSong])
   }
 
   return (
