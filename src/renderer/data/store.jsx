@@ -10,7 +10,7 @@ export const Store = ({ children }) => {
   }
 
   useEffect(() => {
-    console.log(songList)
+    // console.log(songList)
   }, [songList])
 
   return <StoreContext.Provider value={store}>{children}</StoreContext.Provider>

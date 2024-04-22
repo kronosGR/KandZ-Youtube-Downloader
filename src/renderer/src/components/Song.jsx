@@ -1,7 +1,6 @@
 import { timeToString } from '../utils/timeToString'
 import style from './Song.module.css'
 const Song = ({ song, aa }) => {
-  console.log(song)
   return (
     <div className={style.container}>
       <div className={style.aa}>{aa}</div>

@@ -1,5 +1,6 @@
 export class Song {
-  constructor(author, url, thumbnail, title, duration, sizeTotal, sizeDownloaded) {
+  constructor(id, author, url, thumbnail, title, duration, sizeTotal, sizeDownloaded) {
+    this.id = id
     this.author = author
     this.url = url
     this.thumbnail = thumbnail
