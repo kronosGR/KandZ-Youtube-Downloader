@@ -10,7 +10,7 @@ function App() {
       <div className={style.container}>
         <SettingsToolbar />
         <Toolbar />
-        {/* <SongList /> */}
+        <SongList />
       </div>
     </Store>
   )

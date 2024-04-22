@@ -1,5 +1,5 @@
 .container {
-  width: 100%;
+  width: 98%;
   margin: 5px;
   background-color: white;
   padding: 5px;
@@ -13,6 +13,13 @@
   flex-direction: column;
 }
 
+.aa {
+  font-weight: bold;
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+}
+
 .thumbnail {
   width: 100px;
 }
@@ -20,4 +27,9 @@
 .author {
   font-size: 0.7rem;
   font-weight: bold;
+}
+
+.duration {
+  font-size: 0.6rem;
+  color: blue;
 }

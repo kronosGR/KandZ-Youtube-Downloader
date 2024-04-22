@@ -7,9 +7,9 @@ import Song from './Song'
 const SongList = () => {
   const { songList } = useContext(StoreContext)
   return (
-    <div>
+    <div className={style.container}>
       {songList.map((item, index) => (
-        <Song song={item} key={index} />
+        <Song song={item} aa={index} key={index} />
       ))}
     </div>
   )
